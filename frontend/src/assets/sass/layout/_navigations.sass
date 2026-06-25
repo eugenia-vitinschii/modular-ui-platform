@@ -1,0 +1,25 @@
+
+/*=== [wrapper: header, content, footer] ===*/
+
+@use '../abstracts/colors' as *
+
+.wrapper
+   display: flex
+   flex-direction: column
+   min-height: 100vh
+   background: $bg
+
+.header
+   flex: 0 0 auto
+
+.content
+   flex: 1 0 auto
+   padding: 20px 0px 0px 0px   
+.footer
+   padding: 20px 0px
+   flex: 0 0 auto
+
+.container
+   max-width: 1400px
+   margin: 0px auto
+   padding: 0px 20px
