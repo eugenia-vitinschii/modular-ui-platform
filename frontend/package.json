@@ -18,9 +18,9 @@
   },
   "dependencies": {
     "axios": "^1.18.0",
+    "modular-ui-kit-vue": "^1.0.4",
     "pinia": "^3.0.4",
-    "vue": "^3.5.38",
-    "modular-ui-kit": "github:eugenia-vitinschii/modular-ui-kit"
+    "vue": "^3.5.38"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
