@@ -1,23 +1,32 @@
 <template>
-  <div class="wrapper">
-    <app-header />
-    <div class="content">
-      <router-view />
-      <div class="container">
-        <base-text as="h1" :type="'heading'" :variant="'primary'">Modular UI Platform</base-text>
-        <base-text as="h2" :type="'subheading'" :variant="'secondary'">A full-stack starter template for developing a platform with a modular interface, built-in authentication, and custom UI-kit integration.</base-text>
-        <base-text :variant="'muted'">A full-stack starter template for developing a platform with a modular interface, built-in authentication, and custom UI-kit integration.</base-text>
+  <Transition name="fade" mode="out-in">
+    <div class="wrapper" v-if="route.meta.layout === 'error' || route.meta.layout === 'login'">
+      <div class=" content">
+        <router-view />
       </div>
     </div>
-    <app-footer />
-  </div>
+    <div class="wrapper" v-else>
+      <app-header />
+      <div class="content">
+        <base-breadcrumbs />
+        <router-view />
+        <base-toast-container />
+      </div>
+      <app-footer />
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
+/* ROUTER */
+import { useRoute } from 'vue-router';
+
 /* === COMPONENTS === */
 import AppHeader from './widgets/AppHeader.vue';
 import AppFooter from './widgets/AppFooter.vue';
 
-import { BaseText} from 'modular-ui-kit-vue'
+import { BaseBreadcrumbs, BaseToastContainer } from 'modular-ui-kit-vue'
 
+
+const route = useRoute()
 </script>

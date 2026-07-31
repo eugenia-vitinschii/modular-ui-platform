@@ -1,0 +1,20 @@
+<template>
+   <div class="page">
+      <div class="container">
+         <div class="page__wrapper  error-page-wrapper">
+            <base-error-page-state code="500" title="Internal Server Error" button-text="try again"
+               @action="handleReload"
+               description="Something went wrong on our end. Our technical team has been notified, and we are working to fix the issue. Please try again later" />
+         </div>
+      </div>
+   </div>
+</template>
+
+<script setup lang="ts">
+/* COMPONENTS */
+import BaseErrorPageState from '../components/BaseErrorPageState.vue';
+
+function handleReload() {
+   window.location.reload()
+}
+</script>
