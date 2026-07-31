@@ -1,4 +1,5 @@
 
+import 'modular-ui-kit-vue/dist/modular-ui-kit-vue.css'
 import '@/assets/sass/app.sass'
 
 import { createApp } from 'vue'

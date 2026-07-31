@@ -4,14 +4,9 @@
     <div class="content">
       <router-view />
       <div class="container">
-        <h1 class="heading">Lorem, ipsum dolor [heading].</h1>
-        <h4 class="subheading">Lorem ipsum dolor sit amet. [subheading]</h4>
-        <p class="body-text">[body-text] Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aspernatur
-          dignissimos
-          tempore adipisci
-          doloribus aut fuga est rerum, optio ipsam! Ipsam aut accusantium minus tenetur. Laborum tempore distinctio
-          enim
-          numquam.</p>
+        <base-text as="h1" :type="'heading'" :variant="'primary'">Modular UI Platform</base-text>
+        <base-text as="h2" :type="'subheading'" :variant="'secondary'">A full-stack starter template for developing a platform with a modular interface, built-in authentication, and custom UI-kit integration.</base-text>
+        <base-text :variant="'muted'">A full-stack starter template for developing a platform with a modular interface, built-in authentication, and custom UI-kit integration.</base-text>
       </div>
     </div>
     <app-footer />
@@ -22,5 +17,7 @@
 /* === COMPONENTS === */
 import AppHeader from './widgets/AppHeader.vue';
 import AppFooter from './widgets/AppFooter.vue';
+
+import { BaseText} from 'modular-ui-kit-vue'
 
 </script>
