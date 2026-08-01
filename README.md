@@ -31,3 +31,9 @@ npm run dev
 ```
 
 
+#####  /backend create .env (example + read data base)
+```
+PORT=4000
+SECRET=your_jwt_secret
+MONGO_URI=mongodb+srv://tester:CH2vaGB6mgHoIRWx@knowledge-base.lakfycb.mongodb.net/modular-ui-platform?appName=knowledge-base
+```
