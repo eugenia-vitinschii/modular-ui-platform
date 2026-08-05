@@ -11,6 +11,7 @@ import { LoginUserDto } from '../dtos/login-user.dto.js'
 import { ConflictError } from '@/common/errors/conflict.error.js'
 import { signToken } from '@/common/utils/jwt.js'
 import { UnauthorizedError } from '@/common/errors/unauthorized.error.js'
+import { NotFoundError } from '@/common/errors/not-found.error.js'
 
 const SALT_ROUNDS = 10
 
@@ -65,6 +66,21 @@ class AuthService {
          token
       }
 
+   }
+   /* GET ME */
+   async getMe(userId: string){
+      console.log("🔍 ИЩЕМ ЮЗЕРА С ID:", userId);
+      const user = await UserModel.findById(userId).select('-password')
+
+      if(!user){
+         throw new NotFoundError("User not found")
+      }
+
+      return user
+   }
+   /* LOGOUT USER */
+   async logout(){
+      return { message: 'Logged out successfully!'}
    }
 }
 

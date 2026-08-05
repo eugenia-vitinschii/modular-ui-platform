@@ -15,7 +15,7 @@
                      </div>
                      <div class="form__item">
                         <base-input v-model="login" type="text" label="*Enter email or name" placeholder="example@email.com"
-                           autocomplete="" />
+                           autocomplete="username" />
                      </div>
                      <div class="form__item">
                         <base-input v-model="password" type="password" label="*Enter password"

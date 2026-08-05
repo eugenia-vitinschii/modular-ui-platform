@@ -22,6 +22,26 @@ class AuthController {
          next(error)
       }
    }
+   /* GET ME */
+   getMe = async (req: Request, res: Response, next: NextFunction) => {
+      try {
+         const id = req.user!.id as string
+         const data = await authService.getMe(id)
+         res.status(200).json(data)
+      } catch (error) {
+         next(error)
+      } 
+   }  
+    /* LOGOUT */
+   logout = async (req: Request, res: Response, next: NextFunction) => {
+      try {
+         const data = await authService.logout()
+         res.status(200).json(data)
+      } catch (error) {
+         next(error)
+      }
+   }
+  
 }
 
 export const authController = new AuthController()
