@@ -15,6 +15,6 @@ const router = Router()
 router.post('/register', validateResource(RegisterUserDto), authController.register)
 
 /* LOGIN */
-router.post('/login', validateResource(LoginUserDto),authController.login)
+router.post('/login', validateResource(LoginUserDto), authController.login)
 
 export default router

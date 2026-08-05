@@ -14,8 +14,8 @@
                         <base-text :variant="'danger'" :align="'center'">{{ auth.error }}</base-text>
                      </div>
                      <div class="form__item">
-                        <base-input v-model="email" type="email" label="*Enter email" placeholder="example@email.com"
-                           autocomplete="email" />
+                        <base-input v-model="login" type="text" label="*Enter email or name" placeholder="example@email.com"
+                           autocomplete="" />
                      </div>
                      <div class="form__item">
                         <base-input v-model="password" type="password" label="*Enter password"
@@ -49,14 +49,14 @@ const auth = useAuthStore()
 const router = useRouter()
 
 /* state */
-const email = ref('')
+const login = ref('')
 const password = ref('')
 
 
 const submit = async () => {
-   if (!email.value || !password.value) return
+   if (!login.value || !password.value) return
 
-   const isSuccess = await auth.login({ email: email.value, password: password.value })
+   const isSuccess = await auth.login({login: login.value, password: password.value })
 
    if (isSuccess) {
       router.push({ name: 'profile' })
