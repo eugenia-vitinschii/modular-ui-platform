@@ -1,0 +1,23 @@
+/* ==== HELPERS ==== */
+@use '../abstracts/muk-mixins' as *
+@use '../abstracts/muk-tokens' as *
+
+/* ==== Sections ==== */
+.muk-section
+   @include muk-container()
+   &__item
+      @include muk-content()
+
+/* ================= PAGE / VIEW =================  */
+.muk-page
+   &__wrapper
+      display: flex
+      flex-direction: column
+      min-height: 100vh
+      min-height: 100dvh
+   &__header
+      flex: 0 0 auto
+   &__content
+      flex: 1 0 auto
+   &__footer
+      flex: 0 0 auto

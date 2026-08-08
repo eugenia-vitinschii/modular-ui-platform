@@ -1,0 +1,38 @@
+
+/*=== [wrapper: header, content, footer] ===*/
+
+
+
+
+/*=== [wrapper: header, content, footer] ===*/
+@use '../abstracts/muk-tokens' as *
+
+.muk-wrapper
+   display: flex
+   flex-direction: column
+   min-height: 100vh
+   background: $muk-bg
+
+.muk-header
+   flex: 0 0 auto
+
+.muk-content
+   flex: 1 0 auto
+   padding: 20px 0px 0px 0px 
+
+.muk-footer
+   background: $muk-bg-card
+   padding: 20px 0px
+   flex: 0 0 auto
+   &__wrapper
+      display: flex
+      flex-direction: column
+      align-items: center
+      gap: 10px
+
+.muk-container
+   max-width: 1400px
+   margin: 0px auto
+   padding: 0px 20px
+
+      

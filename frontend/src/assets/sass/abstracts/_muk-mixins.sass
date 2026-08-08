@@ -1,0 +1,134 @@
+/* === MIXINS === */
+@use '../abstracts/muk-tokens' as *
+
+/*  =============================== FONTS =============================== */
+@mixin muk-font-size($muk-font-size, $line-height)
+   font-size: $muk-font-size
+   line-height: $line-height
+
+/* =============================== BORDER =============================== */
+@mixin muk-border( $muk-border-width:$muk-border-width,  $muk-border-style: $muk-border-style, $muk-border-color: $muk-bg, $muk-border-radius: $muk-border-radius)
+   border: $muk-border-width $muk-border-style $muk-border-color
+   border-radius: $muk-border-radius
+
+/* =============================== BUTTONS =============================== */
+@mixin muk-button-size( $padding-x, $muk-font-size)
+   padding: 3px $padding-x
+   font-size: $muk-font-size
+
+@mixin muk-button-variant($muk-border-color, $muk-bg, $color, $hover-bg: null)
+   @include muk-border($muk-border-color: $muk-border-color, $muk-border-radius: 10px)
+   background: $muk-bg
+   color: $color
+   --spinner-color: #{$muk-border-color}
+   &:hover:not(:disabled):not(.is-loading)
+      @if $hover-bg
+         background: $hover-bg
+      @else 
+         filter: brightness(1.1)
+   &:active:not(:disabled):not(.is-loading)
+      transform: scale(0.97) 
+      filter: brightness(0.9) 
+   &:disabled
+      cursor: not-allowed
+      transform: none
+      opacity: $muk-opacity
+   &.is-loading
+      cursor: wait
+
+/* =============================== ICON BUTTON MIXINS =============================== */
+@mixin muk-icon-button-size($size, $icon-size)
+   width: $size
+   height: $size
+   min-width: $size
+   min-height: $size
+   svg
+      width: $icon-size
+      height: $icon-size
+
+@mixin muk-icon-button-variant($color, $hover-color: null, $muk-bg: transparent, $hover-bg: transparent)
+   color: $color
+   background: $muk-bg
+   svg
+      fill: currentColor 
+   &:hover:not(:disabled):not(.is-loading)
+      @if $hover-color
+         color: $hover-color
+      @else
+         filter: brightness(1.2)
+      @if $hover-bg != transparent
+         background: $hover-bg
+   &:active:not(:disabled):not(.is-loading)
+      transform: scale(0.92)
+   &:disabled
+      opacity: $muk-opacity
+      cursor: not-allowed
+      transform: none
+   &.is-loading
+      cursor: wait
+/* =============================== FORM ELEMENTS =============================== */
+@mixin muk-form-element($muk-bg: $muk-bg-soft)
+   @include muk-border()
+   background: $muk-bg
+   padding: $muk-space-content-md
+   transition: $muk-transition
+   color: $muk-text
+   margin-top: 5px
+   &:focus, &:focus-visible
+      border-color: $muk-primary-hover
+      box-shadow: 0 0 0 4px rgba($muk-primary, 0.15)
+      outline: none
+   &:disabled
+      opacity: $muk-opacity
+      cursor: not-allowed
+   &.is-error
+      border-color: $muk-danger
+      &:focus, &:focus-visible
+         border-color: $muk-danger!important
+         box-shadow: 0 0 0 4px rgba($muk-danger, 0.15)
+
+@mixin muk-form-text($muk-font-size: $muk-body-text, $color: $muk-text)
+   font-size: $muk-font-size
+   color: $color
+
+
+/* =============================== UI ELEMNTS & BLOKS =============================== */
+
+//for blocks  [forms, cards. sections,...]
+   
+@mixin muk-container($muk-bg: $muk-bg-card)
+   @include muk-border()
+   width: 100%
+   background: $muk-bg
+   transition: $muk-transition
+   padding: $muk-space-container-lg 
+   margin: $muk-space-container-lg 0px
+   @media (max-width: 1024px)
+      padding: $muk-space-container-md
+      margin: $muk-space-container-md 0px
+   @media (max-width: 768px)
+      padding: $muk-space-container-sm
+      margin: $muk-space-container-sm 0px
+
+//elements [input, buttons, icons, ...]
+@mixin muk-content($muk-bg: $muk-bg-card)
+   width: 100%
+   background: $muk-bg
+   transition: $muk-transition
+   padding: $muk-space-content-lg
+   margin: $muk-space-content-lg 0px
+   @media (max-width: 1024px)
+      padding: $muk-space-content-md
+      margin: $muk-space-content-md 0px
+   @media (max-width: 768px)
+      padding: $muk-space-content-sm
+      margin: $muk-space-content-sm 0px
+
+
+/* =============================== SKELETONS =============================== */
+@mixin muk-skeleton-block()
+   background: $muk-bg
+   opacity: $muk-opacity
+   border-radius: $muk-border-radius
+
+   
