@@ -1,23 +1,21 @@
 <template>
-   <div class="base-error-page">
-      <div class="base-error-page__content">
-         <base-text :type="'heading'" :align="'center'">{{ code }}</base-text>
-         <base-text :type="'subheading'" :align="'center'">{{ title }}</base-text>
-         <base-text :align="'center'">{{ description }} </base-text>
+   <div class="muk-error-page">
+      <div class="muk-error-page__content">
+         <muk-text :type="'muk-heading'" :align="'center'">{{ code }}</muk-text>
+         <muk-text :type="'muk-subheading'" :align="'center'">{{ title }}</muk-text>
+         <muk-text :align="'center'">{{ description }} </muk-text>
       </div>
-      <div class="base-error-page__actions" v-if="buttonText">
-         <base-button @click="onAction" :variant="'success'">{{ buttonText }}</base-button>
+      <div class="muk-error-page__actions" v-if="buttonText">
+         <muk-button @click="onAction" :variant="'success'">{{ buttonText }}</muk-button>
       </div>
    </div>
 </template>
 
 <script setup lang="ts">
 /* COMPONETS */
-import { BaseButton, BaseText } from 'modular-ui-kit-vue'
-
+import { MukButton, MukText } from 'modular-ui-kit-vue'
 
 /* === PROPS & EMITS === */
-
 const props = defineProps<{
    code: string | number,
    title: string,
@@ -42,7 +40,7 @@ function onAction() {
    flex-direction: column
    justify-content: center
 
-.base-error-page
+.muk-error-page
    max-width: 500px
    display: flex
    flex-direction: column

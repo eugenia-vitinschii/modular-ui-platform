@@ -52,6 +52,8 @@ export const useAuthStore = defineStore("auth", () => {
       } catch (err: any) {
          error.value = err?.response?.data?.message || "Failed to log in. Please check your credentials.";
          return false
+      }finally{
+         isLoading.value = false
       }
    }
    /* === REGISTER === */
@@ -71,6 +73,8 @@ export const useAuthStore = defineStore("auth", () => {
       } catch (err: any) {
          error.value = err?.response?.data?.message || "Failed to log in. Please check your credentials.";
          return false
+      }finally{
+         isLoading.value = false
       }
    }
 

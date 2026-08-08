@@ -1,30 +1,30 @@
 <template>
-   <div class="page">
-      <div class="container">
-         <div class="page__wrapper">
-            <div class="page__header">
-               <base-text :type="'heading'" as="h1" :align="'center'">Login</base-text>
-               <base-text :type="'subheading'" as="h2" :align="'center'">Welcome back! Please enter your
-                  details.</base-text>
+   <div class="muk-page">
+      <div class="muk-container">
+         <div class="muk-page__wrapper">
+            <div class="muk-page__header">
+               <muk-text :type="'muk-heading'" as="h1" :align="'center'">Login</muk-text>
+               <muk-text :type="'muk-subheading'" as="h2" :align="'center'">Welcome back! Please enter your
+                  details.</muk-text>
             </div>
-            <div class="page__content ">
-               <div class="form-wrapper section">
-                  <form class="form" @submit.prevent="submit">
-                     <div class="form__error" v-if="auth.error">
-                        <base-text :variant="'danger'" :align="'center'">{{ auth.error }}</base-text>
+            <div class="muk-page__content ">
+               <div class="muk-form-wrapper muk-section">
+                  <form class="fmuk-orm" @submit.prevent="submit">
+                     <div class="muk-orm__error" v-if="auth.error">
+                        <muk-text :variant="'danger'" :align="'center'">{{ auth.error }}</muk-text>
                      </div>
-                     <div class="form__item">
-                        <base-input v-model="login" type="text" label="*Enter email or name" placeholder="example@email.com"
+                     <div class="muk-form__item">
+                        <muk-input v-model="login" type="text" label="*Enter email or name" placeholder="example@email.com"
                            autocomplete="username" />
                      </div>
-                     <div class="form__item">
-                        <base-input v-model="password" type="password" label="*Enter password"
+                     <div class="muk-form__item">
+                        <muk-input v-model="password" type="password" label="*Enter password"
                            autocomplete="current-password" />
                      </div>
-                     <div class="form__actions">
-                        <base-button :variant="'secondary'" @click="handleRegister">register</base-button>
-                        <base-button :type="'submit'" :loading="auth.isLoading"
-                           :disabled="auth.isLoading">login</base-button>
+                     <div class="muk-form__actions">
+                        <muk-button :variant="'secondary'" @click="handleRegister">register</muk-button>
+                        <muk-button :type="'submit'" :loading="auth.isLoading" :error="auth.error"
+                           :disabled="auth.isLoading">login</muk-button>
                      </div>
                   </form>
                </div>
@@ -40,7 +40,7 @@ import { useRouter } from 'vue-router';
 import { onUnmounted, ref } from 'vue';
 
 /* COMPONENTS */
-import { BaseText, BaseInput, BaseButton } from 'modular-ui-kit-vue'
+import { MukText,MukInput,MukButton } from 'modular-ui-kit-vue'
 
 /* STORE */
 import { useAuthStore } from '../store/useAuthStore';
@@ -54,8 +54,12 @@ const password = ref('')
 
 
 const submit = async () => {
-   if (!login.value || !password.value) return
+   auth.clearError()
 
+   if (!login.value || !password.value){
+      auth.error = 'Please fill in all required fields correctly. '
+      return
+   }
    const isSuccess = await auth.login({login: login.value, password: password.value })
 
    if (isSuccess) {
