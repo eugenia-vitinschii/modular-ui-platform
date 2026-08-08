@@ -37,3 +37,25 @@ PORT=4000
 SECRET=your_jwt_secret
 MONGO_URI=mongodb+srv://tester:CH2vaGB6mgHoIRWx@knowledge-base.lakfycb.mongodb.net/modular-ui-platform?appName=knowledge-base
 ```
+
+### modular-ui-kit-vue
+⚠️ Upgrading to Version 2.0.0 (Breaking Changes)
+If you are upgrading from v1.x and your components do not use the Base prefix (e.g., you were using BaseInput instead of MukInput), please follow these steps to perform a clean reinstallation and flush the package cache:
+
+Uninstall the old version:
+
+```
+npm uninstall modular-ui-kit-vue
+```
+
+Clear the npm cache:
+
+```
+npm cache clean --force
+```
+
+Install the new version 2.0.0:
+
+```
+npm i modular-ui-kit-vue@2.0.0 --legacy-peer-deps
+```
